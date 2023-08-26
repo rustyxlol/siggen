@@ -1,4 +1,12 @@
-# React + Vite
+# Signature Generator
+
+A minimal signature generator for Huawei OBS 
+
+Paste in your JSON policy (*or b64enc policy*) **and** secret access key to generate a HMAC-SHA1 b64enc signature.
+
+---
+
+## Made with Vite ♥
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
