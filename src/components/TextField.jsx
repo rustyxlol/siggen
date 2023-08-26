@@ -1,4 +1,4 @@
-function TextField({ label, value, readOnly = false, rows = 6, onChange }) {
+const TextField = ({ label, value, readOnly = false, rows = 6, onChange }) => {
   return (
     <div className="text-field">
       <label htmlFor={label}>{label}:</label>
@@ -12,6 +12,6 @@ function TextField({ label, value, readOnly = false, rows = 6, onChange }) {
       />
     </div>
   );
-}
+};
 
 export default TextField;
