@@ -10,9 +10,8 @@ function App() {
 
   const calculateHMAC = () => {
     try {
-      // const policyBase64 = btoa(policy);
       const hmac = CryptoJS.HmacSHA1(policy_base64, accessKey);
-      const hmacBase64 = CryptoJS.enc.Base64.stringify(hmac); // Calculate HMAC and encode to base64
+      const hmacBase64 = CryptoJS.enc.Base64.stringify(hmac);
       setSignature(hmacBase64);
 
     } catch (error) {
