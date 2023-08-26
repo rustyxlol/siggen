@@ -1,21 +1,22 @@
-import React, { useState } from 'react';
-import './App.css';
-import CryptoJS from 'crypto-js';
+import { useState } from "react";
+import "./App.css";
+import CryptoJS from "crypto-js";
+import TextField from "./components/TextField";
+import TextLine from "./components/TextLine";
 
 function App() {
-  const [policy, setPolicy] = useState('');
-  const [policy_base64, setPolicy_base64] = useState('');
-  const [accessKey, setAccessKey] = useState('');
-  const [signature, setSignature] = useState('');
+  const [policy, setPolicy] = useState("");
+  const [policyBase64, setPolicyBase64] = useState("");
+  const [accessKey, setAccessKey] = useState("");
+  const [signature, setSignature] = useState("");
 
   const calculateHMAC = () => {
     try {
-      const hmac = CryptoJS.HmacSHA1(policy_base64, accessKey);
+      const hmac = CryptoJS.HmacSHA1(policyBase64, accessKey);
       const hmacBase64 = CryptoJS.enc.Base64.stringify(hmac);
       setSignature(hmacBase64);
-
     } catch (error) {
-      setSignature('Error calculating HMAC-SHA1');
+      setSignature("Error calculating HMAC-SHA1");
     }
   };
 
@@ -23,42 +24,33 @@ function App() {
     <div className="app">
       <div className="center-box">
         <h1>Signature Generator</h1>
-        <label htmlFor="policy">Policy (JSON Object):</label>
-        <textarea
-          id="policy"
-          rows="5"
-          cols="40"
+        <TextField
+          label="Policy (JSON/Base64 Decoded)"
           value={policy}
           onChange={(e) => {
             setPolicy(e.target.value);
-            setPolicy_base64(btoa(e.target.value))
+            setPolicyBase64(btoa(e.target.value));
           }}
-        />
-        <label htmlFor="policy_base64">Policy(b64enc)</label>
-        <textarea
-          id="policy_base64"
-          rows="6"
-          cols="40"
-          value={policy_base64}
+        ></TextField>
+        <TextField
+          label="Policy (Base64 Encoded)"
+          value={policyBase64}
           onChange={(e) => {
-            setPolicy_base64(e.target.value)
+            setPolicyBase64(e.target.value);
+            setPolicy(atob(e.target.value));
           }}
         />
-        <label htmlFor="accessKey">Secret Access Key:</label>
-        <input
-          type="text"
-          id="accessKey"
+        <TextLine
+          label="Secret Access Key"
           value={accessKey}
           onChange={(e) => setAccessKey(e.target.value)}
-        />
+        ></TextLine>
         <button onClick={calculateHMAC}>Calculate Signature</button>
-        <label htmlFor="signature">HMAC-SHA1 Result(b64enc)</label>
-        <textarea
-          id="signature"
-          rows="1"
-          cols="40"
+        <TextField
+          label="HMAC-SHA1 Result (Base64 Encoded)"
           value={signature}
-          readOnly
+          readOnly={true}
+          rows="1"
         />
       </div>
     </div>

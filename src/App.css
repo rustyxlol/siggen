@@ -1,5 +1,12 @@
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +20,7 @@ body {
   padding: 50px;
   border-radius: 30px;
   border: 2px solid darksalmon;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .center-box {
@@ -34,11 +41,11 @@ textarea,
 input {
   width: 100%;
   padding: 10px;
-  margin-top: 5px;
   border: 2px solid #e6cfd2;
   background-color: #ffebee;
-  border-radius: 5px;
+  border-radius: 10px;
   color: black;
+  resize: none;
 }
 
 textarea:hover,
@@ -49,12 +56,11 @@ input:hover {
 }
 
 button {
-  margin-top: 10px;
+  margin-top: 30px;
   background-color: rgb(243, 91, 75);
   color: white;
-  border: none;
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 20px;
   cursor: pointer;
 }
 
@@ -62,6 +68,6 @@ button:hover {
   background-color: green;
 }
 
-#result {
-  margin-top: 15px;
+button:focus {
+  outline: none !important;
 }
