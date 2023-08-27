@@ -4,6 +4,10 @@ A minimal signature generator for Huawei OBS
 
 Paste in your JSON policy (*or b64enc policy*) **and** secret access key to generate a HMAC-SHA1 b64enc signature.
 
+## Reference
+
+Huawei Docs: https://support.huaweicloud.com/intl/en-us/api-obs/obs_04_0009.html
+
 ---
 
 ## Made with Vite ♥
